@@ -1,6 +1,6 @@
-const gql = require('graphql-tag')
+const { gql } = require('apollo-server')
 
-const typeDefs = gql`
+module.exports = gql`
   type Post{
     id: ID!
     body: String!
@@ -20,8 +20,12 @@ const typeDefs = gql`
     getPosts: [Post],
     getUsers: [User]
   }
+
+  type Mutation{
+    register(registerInput: registerInput)
+  }
 `
 
-module.exports = {
-  typeDefs
-}
+// module.exports = {
+//   typeDefs
+// }
