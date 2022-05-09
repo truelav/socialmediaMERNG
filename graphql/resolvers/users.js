@@ -32,7 +32,6 @@ module.exports = {
     async login(_, {username, password}){
       const { valid, errors } = validateLoginInput(username, password);
 
-
       const user = await User.findOne({username})
 
       if(!user){
@@ -87,15 +86,15 @@ module.exports = {
 
       const token = generateToken(res)
 
-      console.log()
 
       return {
         ...res._doc,
         id: res._id,
         token
       }
-
     }
+
+
   }
 }
 
