@@ -13,11 +13,13 @@ module.exports.validateRegisterInput = (username, email, password, confirmPasswo
     if(!email.match(regEx)){
       errors.email = "Email must be have a valid form xxx@xxxmail.com"
     }
-    if(password = ''){
+    if(password === ''){
       errors.password = "Password myst not be empty"
-    } else if (password !== confirmPassword){
-      errors.password = 'Password and confirm password does not match'
-    }
+    } 
+    // else if (password !== confirmPassword){
+    //   console.log(password, confirmPassword)
+    //   errors.password = 'Password and confirm password does not match'
+    // }
   }
 
   return {
@@ -25,4 +27,16 @@ module.exports.validateRegisterInput = (username, email, password, confirmPasswo
     valid: Object.keys(errors).length < 1
   }
 
+}
+
+module.exports.validateLoginInput = (username, password) => {
+  const errors = {}
+
+  if(username.trim() === ''){
+    errors.username = "Username must not be empty"
+  }
+
+  if(password.trim() === ''){
+    errors.password = "Password must not be empty"
+  }
 }
