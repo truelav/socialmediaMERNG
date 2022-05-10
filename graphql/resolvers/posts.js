@@ -15,7 +15,9 @@ module.exports = {
     async getSinglePost(_, { postId }){
       try {
         const post = await Post.findById(postId)
-        console.log(post, postId)
+
+        // console.log(post, postId)
+
         if(post){
           return post
         } else {
@@ -30,7 +32,7 @@ module.exports = {
     async createPost(_, { body }, context){
       const user = checkAuth(context)
 
-      console.log(user)
+      // console.log(user)
 
       const newPost = new Post({
         body,
