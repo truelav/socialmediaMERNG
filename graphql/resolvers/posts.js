@@ -16,8 +16,6 @@ module.exports = {
       try {
         const post = await Post.findById(postId)
 
-        // console.log(post, postId)
-
         if(post){
           return post
         } else {
@@ -31,8 +29,6 @@ module.exports = {
   Mutation: {
     async createPost(_, { body }, context){
       const user = checkAuth(context)
-
-      // console.log(user)
 
       const newPost = new Post({
         body,
