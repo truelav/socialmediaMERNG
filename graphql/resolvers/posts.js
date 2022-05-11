@@ -30,7 +30,9 @@ module.exports = {
     async createPost(_, { body }, context){
       const user = checkAuth(context)
 
-      console.log(context, user)
+      if(args.body.trim() === ''){
+        throw new Error('Post body must not be happy')
+      }
 
       const newPost = new Post({
         body,

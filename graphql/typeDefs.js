@@ -6,6 +6,10 @@ module.exports = gql`
     body: String!
     createdAt: String!
     username: String!
+    comments: [Comment]!
+    likes: [Like]!
+    likesCount: Int!
+    commentsCount: Int!
   }
 
   type Comment {
@@ -52,4 +56,5 @@ module.exports = gql`
     deleteComment(postId: ID, commentId: ID! ): Post!
     likePost(postId: ID): Post!
   }
+
 `
