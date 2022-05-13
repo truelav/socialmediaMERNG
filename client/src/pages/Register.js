@@ -6,17 +6,18 @@ const Register = (props) => {
 
   const [errors, setErrors] = useState({})
   const [values, setValues] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: 'dawdawd',
+    email: 'dwadawd@mail.com',
+    password: 'pass1',
+    confirmPassword: 'pass1'
   })
-  const [addUser, { error }] = useMutation(REGISTER_USER)
+  const [addUser, { data, loading, error }] = useMutation(REGISTER_USER)
    
   const onSubmit = (event) => {
     event.preventDefault()
-    console.log(event.target.name)
-    registerUser()
+    // console.log(event.target.name)
+    // registerUser()
+    addUser({variables: {username: values.username, email: values.email, password: values.password, confirmPassword: values.confirmPassword}})
   }
 
   const onChange = (event) => {
@@ -63,26 +64,22 @@ const Register = (props) => {
 }
 
 const REGISTER_USER  = gql`
-  mutation register (
-    $username: String!
-    $email: String!
-    $password: String!
-    $confirmPassowrd: String!){
-      register(
-        registerInput: {
-          username: $username
-          email: $email
-          password: $password
-          confirmPassword: $confirmPassword
-        }
-      ){
-        id
-        email
-        username
-        createdAt
-        token
+  mutation{
+    register(
+      registerInput: {
+        username: "myuser1"
+        password: "password1"
+        confirmPassword: "password1"
+        email: "myemail@gmail.com"
       }
+    ){
+      username
+      email
+      id
+      createdAt
+      token
     }
+  }
 `
 
 export default Register
